@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+ 
+
+  <mapper namespace="bikeweb.dao.AdminDao">
+ 
+   <insert id="insNotice" parameterType="notice">
+   INSERT INTO notice values('notice'||notice_seq.nextval,
+   #{mgrid},sysdate,#{title},#{content},#{imgfile})
+   </insert>
+   
+   <delete id="delNotice" parameterType="string">
+   delete from notice where noticeno = #{noticeno}
+   </delete>
+   
+   <select id="getImgfile" resultType="string" parameterType="string">
+   	select imgfile from notice where noticeno = #{noticeno}
+   </select>
+   
+	<update id="uptQna" parameterType="qna">
+	UPDATE qna SET mgrid=#{mgrid},answer=#{answer} WHERE qno=#{qno}
+	</update>
+  </mapper> 
